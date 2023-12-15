@@ -1,5 +1,5 @@
 import { accessToken } from './auth';
-import { documentVisibilityStore } from 'svelte-legos';
+//import { documentVisibilityStore } from 'svelte-legos';
 
 export class WebSocketClient {
 	private accessToken: string | null = null;
@@ -33,17 +33,17 @@ export class WebSocketClient {
 			}
 		});
 
-		const visibility = documentVisibilityStore();
-		visibility.subscribe((visible) => {
-			if (
-				visible === 'visible' &&
-				(this.readyState === WebSocket.CLOSING || this.readyState === WebSocket.CLOSED)
-			) {
-				this.connect();
-			} else if (visible === 'hidden') {
-				this.close();
-			}
-		});
+		// const visibility = documentVisibilityStore();
+		// visibility.subscribe((visible) => {
+		// 	if (
+		// 		visible === 'visible' &&
+		// 		(this.readyState === WebSocket.CLOSING || this.readyState === WebSocket.CLOSED)
+		// 	) {
+		// 		this.connect();
+		// 	} else if (visible === 'hidden') {
+		// 		this.close();
+		// 	}
+		// });
 	}
 
 	public connect(reconnectAttempt: boolean = true) {
